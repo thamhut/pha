@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    <url>
+        <loc>http://lenocnha.com/</loc>
+        <changefreq>always</changefreq>
+        <priority>1.00</priority>
+        <lastmod>2016-02-26T00:00:00+07:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lenocnha.com/category/nonstop_i1</loc>
+        <changefreq>always</changefreq>
+        <priority>1.00</priority>
+        <lastmod>2016-02-26T00:00:00+07:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lenocnha.com/category/remix_i2</loc>
+        <changefreq>always</changefreq>
+        <priority>1.00</priority>
+        <lastmod>2016-02-26T00:00:00+07:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lenocnha.com/category/electronic-house_i3</loc>
+        <changefreq>always</changefreq>
+        <priority>1.00</priority>
+        <lastmod>2016-02-26T00:00:00+07:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lenocnha.com/category/producer-vn_i4</loc>
+        <changefreq>always</changefreq>
+        <priority>1.00</priority>
+        <lastmod>2016-02-26T00:00:00+07:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lenocnha.com/category/dance-trance_i5</loc>
+        <changefreq>always</changefreq>
+        <priority>1.00</priority>
+        <lastmod>2016-02-26T00:00:00+07:00</lastmod>
+    </url>
+    <url>
+        <loc>http://lenocnha.com/category/video-dj_i6</loc>
+        <changefreq>always</changefreq>
+        <priority>1.00</priority>
+        <lastmod>2016-02-26T00:00:00+07:00</lastmod>
+    </url>
+
+</urlset>

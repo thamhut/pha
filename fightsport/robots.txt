@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /system/
+Disallow: /runlink/
+Disallow: /manager/
+Disallow: /admin/
+Disallow: /user/login
+Disallow: /user/register
+sitemap: http://fightsportgroup.com/sitemap.xml

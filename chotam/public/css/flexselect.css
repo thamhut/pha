@@ -1,0 +1,49 @@
+.flexselect_dropdown {
+  display: none;
+  position: absolute;
+  z-index: 999999;
+  margin: 0;
+	padding: 0;
+  max-height: 200px;
+  overflow-x: hidden;
+	background-color: Window;
+  color: WindowText;
+  text-align: left;
+  box-shadow: 0 6px 12px #ccc;
+  -webkit-box-shadow: 0 6px 12px #ccc;
+}
+
+.flexselect_dropdown ul {
+	width: 100%;
+	list-style-position: outside;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.flexselect_dropdown li {
+	margin: 0px;
+	padding: 2px 5px;
+	cursor: pointer;
+	display: block;
+	width: 100%;
+	font: Menu;
+	overflow: hidden;
+}
+
+.flexselect_selected {
+	background-color: Highlight;
+	color: HighlightText;
+}
+.flexselect_dropdown li { font-size: 14px; }
+      small { color: #999; }
+      .flexselect_selected small { color: #ddd; }
+      
+.address_select form
+{
+    width:170px;font-size: 14px;color: #333;padding: 5px 0;
+}
+.address_select input
+{
+    width:165px;font-size: 14px;color: #333;
+}

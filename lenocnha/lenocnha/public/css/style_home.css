@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+a,abbr,acronym,address,blockquote,body,caption,code,dd,del,dfn,div,dl,dt,em,fieldset,form,h1,h2,h3,h4,h5,h6,html,iframe,img,label,legend,li,object,ol,p,pre,q,span,ul {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-weight: inherit;
+    vertical-align: baseline;
+}
+
+caption,table,tbody,td,tfoot,th,thead,tr {
+    vertical-align: top;
+    margin: 0;
+    padding: 0;
+    font-weight: inherit;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-weight: 400;
+}
+
+.continue_view{padding:7px !important; font-size: 90% !important;margin-top:-5px;}
+.inline-block{display: inline-block;}
+.icon_fb{
+    background: url("/public/img/fb_icon.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 32px;
+    width: 32px;
+}
+
+.icon_tw{
+    background: url("/public/img/tw_icon.png") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    height: 32px;
+    width: 32px;
+}
+.top1{background: red!important; margin:25px 0 0 0!important;}.top2{background: green!important;margin:25px 0 0 0!important;}.top3{background: cornflowerblue!important;margin:25px 0 0 0!important;}

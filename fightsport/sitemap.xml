@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <url>
+    <loc>http://fightsportgroup.com/</loc>
+    <lastmod>2015-08-11T00:00:00+07:00</lastmod>
+    <priority>1</priority>
+  </url>
+  <url>
+    <loc>http://fightsportgroup.com/category/ufc_i3</loc>
+    <lastmod>2015-08-11T00:00:00+07:00</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://fightsportgroup.com/category/mma_i4</loc>
+    <lastmod>2015-08-11T00:00:00+07:00</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://fightsportgroup.com/category/news_i5</loc>
+    <lastmod>2015-08-11T00:00:00+07:00</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://fightsportgroup.com/category/news_i6</loc>
+    <lastmod>2015-08-11T00:00:00+07:00</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>http://fightsportgroup.com/category/training_i7</loc>
+    <lastmod>2015-08-11T00:00:00+07:00</lastmod>
+    <priority>0.5</priority>
+  </url>
+</urlset>

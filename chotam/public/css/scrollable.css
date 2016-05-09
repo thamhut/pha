@@ -1,0 +1,162 @@
+
+/*
+	root element for the scrollable.
+	when scrolling occurs this element stays still.
+*/
+.scrollable {
+
+	/* required settings */
+	position:relative;
+	overflow:hidden;
+	width: 972px;
+	height:120px;
+
+	/* custom decorations */
+	border:1px solid #ccc;
+	/*background:url('http://www.stephenrhoades.com/demos/images/scrollable/h300.png') repeat-x;*/
+    background: #FFFFFF;
+    margin: 0 auto;
+}
+.scrollable_img {
+
+	/*background: url("http://www.stephenrhoades.com/demos/images/scrollable/h300.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);*/
+    background: #FFFFFF;
+    border: 1px solid #ccc;
+    float: right;
+    height: 120px;
+    overflow: hidden;
+    position: relative;
+    width: 710px;
+}
+
+/*
+	root element for scrollable items. Must be absolutely positioned
+	and it should have a extremely large width to accomodate scrollable items.
+	it's enough that you set the width and height for the root element and
+	not for this element.
+*/
+.scrollable .items {
+	/* this cannot be too large */
+	width:20000em;
+	position:absolute;
+	clear:both;
+}
+
+.scrollable_img .items {
+	/* this cannot be too large */
+	width:20000em;
+	position:absolute;
+	clear:both;
+}
+
+.items div {
+	float:left;
+	width:120px;
+    position: relative;
+}
+.items div:hover {
+	opacity:0.7;
+}
+
+/* single scrollable item */
+.scrollable img {
+	float:left;
+	/*margin:20px 5px 20px 21px;
+	background-color:#fff;*/
+	width:115px;
+	height:120px;
+	border:1px solid #EEEEEE;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+}
+.scrollable_img img {
+	float:left;
+	/*margin:20px 5px 20px 21px;
+	background-color:#fff;*/
+	width:115px;
+	height:120px;
+	border: 1px solid #EEE;
+    border-top: none;
+}
+
+/* active item */
+.scrollable .active {
+	border:2px solid #000;
+	position:relative;
+	cursor:default;
+}
+.scrollable_img .active {
+	border:2px solid #000;
+	position:relative;
+	cursor:default;
+}
+
+/* this makes it possible to add next button beside scrollable */
+.scrollable {
+	/*float:left;*/	
+}
+
+/* prev, next, prevPage and nextPage buttons url("/public/img/triangle.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0)*/
+a.browse {
+	background:url('') no-repeat;
+	display:block;
+	width:30px;
+	height:30px;
+	float:left;
+	margin:40px 0px;
+	cursor:pointer;
+	font-size:1px;
+}
+a.browse2 {
+	
+	display:block;
+	width:30px;
+	height:30px;
+	float:left;
+	margin:50px 0px;
+	cursor:pointer;
+	font-size:1px;
+}
+div.div_browse:hover
+{
+    background: url('http://www.stephenrhoades.com/demos/images/scrollable/h300.png');
+}
+
+/* right a.right:hover 		{ background-position:-30px -30px; }*/
+a.right 				{ background:url('/public/img/triangle_right.png') no-repeat;}
+
+a.right:active 	{ background-position:-60px -30px; } 
+
+
+/* left a.left:hover  		{ background-position:-30px 0; }*/
+a.left				{ background:url('/public/img/triangle_left.png') no-repeat;} 
+
+a.left:active  	{ background-position:-60px 0; }
+
+/* up and down */
+a.up, a.down		{ 
+	background:url(../img/scrollable/arrow/vert_large.png) no-repeat; 
+	float: none;
+	margin: 10px 50px;
+}
+
+/* up */
+a.up:hover  		{ background-position:-30px 0; }
+a.up:active  		{ background-position:-60px 0; }
+
+/* down a.down:hover  		{ background-position:-30px -30px; }*/
+a.down 				{ background-position: 0 -30px; }
+
+a.down:active  	{ background-position:-60px -30px; } 
+
+
+/* disabled navigational button */
+a.disabled {
+	visibility:hidden !important;		
+}
+
+div.div_browse_left
+{
+    display: inline; float: left; width: 15px; height: 120px; border-left: 1px solid rgb(204, 204, 204); border-top: 1px solid rgb(204, 204, 204); border-bottom: 1px solid rgb(204, 204, 204);  position: absolute; left: 0px;
+}
+div.div_browse_right{height: 120px; border-right: 1px solid rgb(204, 204, 204); border-top: 1px solid rgb(204, 204, 204); border-bottom: 1px solid rgb(204, 204, 204);  position: absolute; right: 0px; width: 15px; top: 10px;}
