@@ -320,6 +320,26 @@
         }
         return $result;
     }
+
+    function loadcontent_rongbay($link){
+        $data = get_fcontentByGoogle($link);
+        $html = str_get_html($data);
+        $result = array();
+        foreach ($html->find('h1.detail_title') as $item) {
+            $result['title'] = htmlentities($item);
+            break;
+        }
+        foreach ($html->find('div#NewsContent') as $item) {
+            $result['content'] = $item;
+            break;
+        }
+        foreach ($html->find('div.header_province') as $item) {
+            $city = trim(strip_tags($item));
+            $result['city'] = getCity($city);
+            break;
+        }
+        return $result;
+    }
     
     function loadcontent($url, $cate)
     {
@@ -449,12 +469,35 @@
                         {
                             $img = implode(',',$data2['img']);
                         }
-                        echo $img;
                         $content = isset($data2['content'])?$data2['content']:'';
                         $content = preg_replace('#<a(.*?)>#i', '<a href="http://adf.ly/8245302/raovat">', $content);
                         $lienlac = ',,,,';
                         if($title!=''&& strlen($content)>100){
                             insertdb($url, 'http://thuephongtro.com'.$e->href, $date, 'thuephongtro.com', $cate, addslashes($content), 2, addslashes($title), $img, $city, $lienlac);
+                        }
+                    }
+                }
+            }
+        }
+
+        if(strpos($url, 'rongbay.com')){
+            foreach($html->find('a.newsTitle') as $e){
+                if(isset($e->src)){
+                    if(checkLink($e->href)!=0)
+                    {
+                        $data2 = loadcontent_rongbay($e->href) ;
+                        $title = isset($data2['title'])?$data2['title']:'';
+                        $city = isset($data2['city'])?$data2['city']:30;
+                        $img = '';
+                        if(isset($data2['img']))
+                        {
+                            $img = implode(',',$data2['img']);
+                        }
+                        $content = isset($data2['content'])?$data2['content']:'';
+                        $content = preg_replace('#<a(.*?)>#i', '<a href="http://adf.ly/8245302/raovat">', $content);
+                        $lienlac = ',,,,';
+                        if($title!=''&& strlen($content)>100){
+                            insertdb($url, $e->href, $date, 'thuephongtro.com', $cate, addslashes($content), 2, addslashes($title), $img, $city, $lienlac);
                         }
                     }
                 }
