@@ -7,7 +7,7 @@
             <div class="box_radio">
                 <div class="bar_control">
                     <!--<audio controls>
-                      <source src="http://www18.zippyshare.com/d/59286057/23455/%5bNhacDJ.vn%5d%20%20Nonstop%20-%20EDM%20-%20Music%20Is%20My%20Life%20Ver%20ll%20-%20DJ%20H%e1%bb%afu%20%c4%90%e1%bb%a9c%20Ngulon%20Mix%20%5bNhacDJ.vn%5d.mp3" type="audio/mpeg">
+                      <source src="<?php echo $music->url; ?>">
                     </audio>-->
                     <?php
                     if(strrpos($music->url,'zippyshare.com')!=false)
@@ -16,11 +16,11 @@
                         $link = explode('/file.html', $link[1]);
                         $link = explode('.zippyshare.com/v/', $link[0]);
                     ?>
-                    
+
                     <script type="text/javascript">var zippywww="<?php echo $link[0]; ?>";var zippyfile="<?php echo $link[1]; ?>";var zippytext="#000000";var zippyback="#313131";var zippyplay="#292726";var zippywidth=610;var zippyauto=true;var zippyvol=80;var zippywave = "#000000";var zippyborder = "#414141";</script><script type="text/javascript" src="http://api.zippyshare.com/api/embed_new.js"></script>
                      <?php
                     }
-                    if(strrpos($music->url,'youtube.com')!=false){
+                    else if(strrpos($music->url,'youtube.com')!=false){
                     ?>
                     <script src="<?php echo $this->url->get().'public/js' ?>/jwplayer.js" ></script>
                     <script src="<?php echo $this->url->get().'public/js' ?>/jwplayer.html5.js" ></script>
@@ -35,17 +35,24 @@
                             'height': 300
                         });
                     </script>
-                    <?php }?>
+                    <?php }
+			else{ ?>
+				<audio controls>
+                      		<source src="<?php echo $music->url; ?>">
+                    		</audio>
+		    <?php }
+		    ?>
+
                 </div>
             </div>
             <div class="box_action" style="margin: 10px 0px 0px; border-bottom: 1px solid rgb(81, 81, 81); padding: 10px 0px;">
-                <span class="spanaction" id="playlist"><img style="vertical-align: sub;" src="/public/img/icon_plus.png">&nbsp;&nbsp;Thêm playlist</span>
+                <span class="spanaction" id="playlist"><img style="vertical-align: sub;" src="/public/img/icon_plus.png">&nbsp;&nbsp;ThÃªm playlist</span>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span class="spanaction" id="share"><img style="vertical-align: sub;" src="/public/img/icon-share.png">&nbsp;&nbsp;Chia sẻ</span>
+                <span class="spanaction" id="share"><img style="vertical-align: sub;" src="/public/img/icon-share.png">&nbsp;&nbsp;Chia sáº»</span>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span onclick="action_music('_like', 1, '<?php echo $music->id;?>');"><img style="vertical-align: sub;" src="/public/img/icon_like1.png">&nbsp;&nbsp;Thích</span>
+                <span onclick="action_music('_like', 1, '<?php echo $music->id;?>');"><img style="vertical-align: sub;" src="/public/img/icon_like1.png">&nbsp;&nbsp;ThÃ­ch</span>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <span onclick="action_music('dislike', 1, '<?php echo $music->id;?>');"><img style="vertical-align: sub;" src="/public/img/icon_dislike.png">&nbsp;&nbsp;Không thích</span>
+                <span onclick="action_music('dislike', 1, '<?php echo $music->id;?>');"><img style="vertical-align: sub;" src="/public/img/icon_dislike.png">&nbsp;&nbsp;KhÃ´ng thÃ­ch</span>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span  id="choose_point"><?php
                     for($i=1; $i<=10; ++$i)
                     {
@@ -54,20 +61,20 @@
                         if($i%2 == 0)
                         echo '<img class="img_choose" onclick="choose_point('.$i.','.$music->id.');" onmouseout="hidechoose('.$i.');" onmousemove="showchoose('.$i.');" id="_'.$i.'" src="/public/img/right_star_dark.png" width="5px" />';
                     }
-                    echo '<i>&nbsp;&nbsp;Bình chọn</i>';
+                    echo '<i>&nbsp;&nbsp;BÃ¬nh chá»n</i>';
                     ?></span>
-                <span onclick="action_music('download', 1, '<?php echo $music->id;?>');" style="float: right;"><a style="color: #eaedf6;" target="_blank" href="<?php echo 'http://'.$music->url;?>"><img style="vertical-align: sub;" src="/public/img/icon-download.png">&nbsp;&nbsp;Tải về</a></span>
+                <span onclick="action_music('download', 1, '<?php echo $music->id;?>');" style="float: right;"><a style="color: #eaedf6;" target="_blank" href="<?php echo 'http://'.$music->url;?>"><img style="vertical-align: sub;" src="/public/img/icon-download.png">&nbsp;&nbsp;Táº£i vá»</a></span>
             </div>
-            
+
             <div id="box_div_action" class="" rel='1'>
-            
+
             </div>
-            
+
             <div style="padding: 10px 0;">
-                <h3>Thông tin bài hát</h3>
+                <h3>ThÃ´ng tin bÃ i hÃ¡t</h3>
                 <br />
                 <p style="color: #a1a1a1;">
-                    <h6>Người đăng: <a style="color: #a1a1a1;" href="<?php echo $this->url->get('user').'/'.$this->utils->converToUrl($music->user->username).'_i'.$music->user->id; ?>"><?php echo isset($music->user->username)?$music->user->username:''; ?></a></h6>
+                    <h6>NgÆ°á»i Ä‘Äƒng: <a style="color: #a1a1a1;" href="<?php echo $this->url->get('user').'/'.$this->utils->converToUrl($music->user->username).'_i'.$music->user->id; ?>"><?php echo isset($music->user->username)?$music->user->username:''; ?></a></h6>
                     <br />
                     <div id="box_content" itemprop="description">
                     <?php
@@ -78,17 +85,17 @@
                     <div class="clear"></div>
                 </p>
             </div>
-            
+
             <div class="clear"></div>
-            
-            <div onclick="hideshow_content();" id="action_content" rel="1"><img src="/public/img/triangle_bottom.png" />Xem thêm</div>
+
+            <div onclick="hideshow_content();" id="action_content" rel="1"><img src="/public/img/triangle_bottom.png" />Xem thÃªm</div>
             <br />
             <div class="div_top_music_box">
                 <ul class="navbar_ul">
                     <li>Tags: </li>
                     <li>Nonstop</li>
                     <li>remix</li>
-                    <li>Nhạc sàn hay</li>
+                    <li>Nháº¡c sÃ n hay</li>
                 </ul>
             </div>
             <div class="clear"></div>
@@ -99,7 +106,7 @@
         <div class="clear"></div>
     </div>
 </div>
-{{ partial('right_menu_detail') }} 
+{{ partial('right_menu_detail') }}
 <script>
 $("div.box_action .spanaction").click(function(e){
     var rel = $("div#box_div_action").attr('rel');
@@ -117,7 +124,7 @@ $("div.box_action .spanaction").click(function(e){
                 success:function( msg ) {
                 }
             });*/
-            $("div#box_div_action").html('<span><i>Chức năng chưa hoàn thành!</i></span>');
+            $("div#box_div_action").html('<span><i>Chá»©c nÄƒng chÆ°a hoÃ n thÃ nh!</i></span>');
         }
         
         if(e['currentTarget'].id == 'share')

@@ -12,7 +12,7 @@
             <li>
                 <img  style="margin-left: 10px; top: 10px;" src="/public/img/users.png" />
                 <h3><b><?php echo isset($music->title)?(strip_tags($music->title)):''; ?></b></h3>
-                <p>Đăng bởi: <?php echo isset($music->username)?$music->username:''; ?></p>
+                <p>ÄÄƒng bá»Ÿi: <?php echo isset($music->username)?$music->username:''; ?></p>
                 <p><img style="vertical-align: sub;" src="/public/img/icon-play-button.png" />&nbsp;&nbsp;&nbsp;<?php echo isset($music->play)?$music->play:0; ?>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img style="vertical-align: sub;" src="/public/img/icon_like1.png" />&nbsp;&nbsp;&nbsp;<?php echo isset($music->_like)?$music->_like:0; ?>
                 </p>
@@ -31,7 +31,7 @@
         <script type="text/javascript" src="//api.zippyshare.com/api/embed_new.js"></script>
          <?php
         }
-        if(strrpos($music->url,'youtube.com')!=false){
+        else if(strrpos($music->url,'youtube.com')!=false){
         ?>
         <script src="<?php echo $this->url->get().'public/js' ?>/jwplayer.js" ></script>
         <script src="<?php echo $this->url->get().'public/js' ?>/jwplayer.html5.js" ></script>
@@ -45,40 +45,48 @@
                 'width':$(document).width()
             });
         </script>
+	<?php }
+			else{ ?>
+				<audio controls>
+                      		<source src="<?php echo $music->url; ?>">
+                    		</audio>
+		<?php }
+	?>
+
         <ul data-role="listview" class="ui-content" >
             <li>
                 <img  style="margin-left: 10px; top: 10px;" src="/public/img/users.png" />
                 <h3><b><?php echo isset($music->title)?(strip_tags($music->title)):''; ?></b></h3>
-                <p>Đăng bởi: <?php echo isset($music->username)?$music->username:''; ?></p>
+                <p>ÄÄƒng bá»Ÿi: <?php echo isset($music->username)?$music->username:''; ?></p>
                 <p><img style="vertical-align: sub;" src="/public/img/icon-play-button.png" />&nbsp;&nbsp;&nbsp;<?php echo isset($music->play)?$music->play:0; ?>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img style="vertical-align: sub;" src="/public/img/icon_like1.png" />&nbsp;&nbsp;&nbsp;<?php echo isset($music->_like)?$music->_like:0; ?>
                 </p>
             </li>
         </ul>
         <?php }?>
-        
+
         <div class="ui-content">
             <div  data-role="navbar">
                 <ul>
-                    <li><a title="Thêm playlist" style="background: #ffffff;" data-ajax='false' data-icon="plus"></a></li>
+                    <li><a title="ThÃªm playlist" style="background: #ffffff;" data-ajax='false' data-icon="plus"></a></li>
                     <li class="spanaction" id="share">
-                        <a data-ajax='false'  title="Chia sẻ" style="background: #ffffff;" data-icon="action" ></a>
+                        <a data-ajax='false'  title="Chia sáº»" style="background: #ffffff;" data-icon="action" ></a>
                     </li>
-                    <li><a title="Thích" style="background: #ffffff;" data-ajax='false' onclick="action_music('_like', 1, '<?php echo $music->id;?>');" data-icon='heart'></a></li>
-                    <li><a title="Không thích" style="background: #ffffff;" data-ajax='false' onclick="action_music('dislike', 1, '<?php echo $music->id;?>');" data-icon='forbidden'></a></li>
-                    <li><a target="_blank" href="<?php echo 'http://'.$music->url;?>" title="Tải về" style="background: #ffffff;" data-ajax='false' data-icon="arrow-d" onclick="action_music('download', 1, '<?php echo $music->id;?>');"></a></li>
+                    <li><a title="ThÃ­ch" style="background: #ffffff;" data-ajax='false' onclick="action_music('_like', 1, '<?php echo $music->id;?>');" data-icon='heart'></a></li>
+                    <li><a title="KhÃ´ng thÃ­ch" style="background: #ffffff;" data-ajax='false' onclick="action_music('dislike', 1, '<?php echo $music->id;?>');" data-icon='forbidden'></a></li>
+                    <li><a target="_blank" href="<?php echo 'http://'.$music->url;?>" title="Táº£i vá»" style="background: #ffffff;" data-ajax='false' data-icon="arrow-d" onclick="action_music('download', 1, '<?php echo $music->id;?>');"></a></li>
                 </ul>
             </div><!-- /navbar -->
-            
-            
+
+
             <div id="box_div_action" class="" rel='1' >
-                
+
             </div>
-            
+
             <div data-role="collapsible" data-content-theme="c">
-               <h3>Thông tin bài hát</h3>
+               <h3>ThÃ´ng tin bÃ i hÃ¡t</h3>
                <p style="color: #a1a1a1;">
-                    <h6>Người đăng: <a style="color: #a1a1a1;" href="<?php echo $this->url->get('user').'/'.$this->utils->converToUrl($music->username).'_i'.$music->id_user; ?>"><?php echo isset($music->username)?$music->username:''; ?></a></h6>
+                    <h6>NgÆ°á»i Ä‘Äƒng: <a style="color: #a1a1a1;" href="<?php echo $this->url->get('user').'/'.$this->utils->converToUrl($music->username).'_i'.$music->id_user; ?>"><?php echo isset($music->username)?$music->username:''; ?></a></h6>
                     <br />
                     <div id="box_content">
                     <?php
@@ -103,21 +111,21 @@
             <br />
             <div>
                 <ul data-role="listview">
-                    <li data-role="list-divider" style="padding-top: 15px; padding-bottom: 15px;">Bài liên quan</li>
+                    <li data-role="list-divider" style="padding-top: 15px; padding-bottom: 15px;">BÃ i liÃªn quan</li>
                     <?php
                         foreach($data['add_music'] as $inonstop)
                         {
                         ?>
                         <li><a title="<?php echo strip_tags($inonstop['title']); ?>" data-ajax='false' href="<?php echo $this->url->get('detail/'.$this->utils->converToUrl($inonstop['title']).'_i'.$inonstop['id']).'.html'; ?>">
                         <?php echo strip_tags($inonstop['title']); ?>
-                        <p>Đăng bởi: <?php echo strip_tags($inonstop['username']); ?> <img style="vertical-align: middle; margin: 0px 5px;" src="/public/img/arrow_right.png" /> <?php echo strip_tags($inonstop['name']); ?></p>
-                        <p><img src="/public/img/icon_headphone.gif" style="vertical-align: sub; opacity: 0.7;" />&nbsp;<span><?php echo $inonstop['play']; ?> lượt</span></p>
+                        <p>ÄÄƒng bá»Ÿi: <?php echo strip_tags($inonstop['username']); ?> <img style="vertical-align: middle; margin: 0px 5px;" src="/public/img/arrow_right.png" /> <?php echo strip_tags($inonstop['name']); ?></p>
+                        <p><img src="/public/img/icon_headphone.gif" style="vertical-align: sub; opacity: 0.7;" />&nbsp;<span><?php echo $inonstop['play']; ?> lÆ°á»£t</span></p>
                         </a></li>
                     <?php }?>
                 </ul>
             </div>
         </div>
-        
+
     </div>
 </div>
 
@@ -131,7 +139,7 @@
             $("div#box_div_action").attr('rel', '2');
             if(e['currentTarget'].id == 'playlist')
             {
-                $("div#box_div_action").html('<span><i>Chức năng chưa hoàn thành!</i></span>');
+                $("div#box_div_action").html('<span><i>Chá»©c nÄƒng chÆ°a hoÃ n thÃ nh!</i></span>');
             }
             
             if(e['currentTarget'].id == 'share')
