@@ -153,14 +153,24 @@ class ControllerBase extends \Phalcon\Mvc\Controller
     }
 
     public function writeFile($id, $json){
-        $path = '/../../filecache/p_'.$id;
+        $path = __DIR__.'/../../filecache/p_'.$id;
         $file = fopen($path, 'a');
         fwrite($file, $json);
         fclose($file);
     }
 
     public function readFile($id){
-        $path = '/../../filecache/p_'.$id;
+        $path = __DIR__.'/../../filecache/p_'.$id;
+        $file = fopen($path, 'r');
+        if(!$file){
+            fclose($file);
+            return false;
+        }else{
+            $json = fgets($file);
+            $json = json_decode($json);
+            fclose($file);
+            return $json;
+        }
     }
 
 }

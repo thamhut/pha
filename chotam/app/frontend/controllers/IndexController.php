@@ -147,10 +147,17 @@ class IndexController extends ControllerBase
     {
         $data = array();
         $data['id'] = $id = $this->dispatcher->getParam('id');
-        $data['data_content'] = Content::findFirst(array(
-            "id = ".$id,
-            "columns" => "id_category,date,title,city, lienlac,id_user,id,img,warning,content"
-        ));
+        $json = $this->readFile($id);
+        if(!$json){
+            $data['data_content'] = Content::findFirst(array(
+                "id = ".$id,
+                "columns" => "id_category,date,title,city, lienlac,id_user,id,img,warning,content"
+            ));
+        }
+        else{
+            $data['data_content'] = (object)$json;
+            $data['data_content']->content = html_entity_decode($data['data_content']->content);
+        }
         if($data['data_content'] != false)
         {
             $category = new Category;
@@ -176,6 +183,32 @@ class IndexController extends ControllerBase
             $this->response->redirect();
         }
 
+    }
+
+    public function cachefileAction(){
+        set_time_limit(0);
+        $id = 300000;
+        $data = Content::find(array(
+            'id < '.$id.' AND (id_user = 2 OR id_user = 1)',
+            "columns" => "id_category,date,title,city, lienlac,id_user,id,img,warning,content"
+        ));
+        $k = 0;
+        foreach($data as $item){
+            $arr = array();
+            $arr['id_category'] = $item->id_category;
+            $arr['date'] = $item->date;
+            $arr['title'] = $item->title;
+            $arr['city'] = $item->city;
+            $arr['lienlac'] = $item->lienlac;
+            $arr['id_user'] = $item->id_user;
+            $arr['id'] = $item->id;
+            $arr['img'] = $item->img;
+            $arr['warning'] = $item->warning;
+            $arr['content'] = htmlentities($item->content);
+            $json = json_encode($arr);
+            $this->writeFile($arr['id'], $json);
+            $k++;
+        }
     }
 
     public function choise_cityAction()
